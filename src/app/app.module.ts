@@ -10,6 +10,10 @@ import { CadastroComponent } from './features/components/cadastro/cadastro.compo
 import { CreditCardComponent } from './features/components/credit-card/credit-card.component';
 import { HomeComponent } from './features/components/home/home.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NgxMaskModule, IConfig } from 'ngx-mask'
+
+
+export const options: Partial<IConfig> | (() => Partial<IConfig>) = null;
 
 @NgModule({
   declarations: [
@@ -26,6 +30,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
+    NgxMaskModule.forRoot(),
     
   ],
   providers: [],

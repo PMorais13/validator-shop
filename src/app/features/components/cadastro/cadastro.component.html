@@ -35,6 +35,8 @@
                 </mat-form-field>
             </td>
         </tr>
+
+
     </table>
 
     <p>
@@ -73,7 +75,7 @@
                     <mat-error *ngIf="(cadastro.touched || cadastro.dirty) && f.cep.errors?.required">Este campo é obrigatório</mat-error>
                     <mat-error *ngIf="(cadastro.touched || cadastro.dirty) && f.cep.errors?.minlength">Número minimo de caracteres é 8</mat-error>
                     <mat-error *ngIf="(cadastro.touched || cadastro.dirty) && f.cep.errors?.maxlength">Número máximo de carateres atingido</mat-error>
-                    <input matInput #postalCode placeholder="Ex. 02270052" name="cep" formControlName="cep" required >
+                    <input matInput #postalCode placeholder="Ex. 02270052" name="cep" formControlName="cep" required mask="99999-999">
                     <mat-hint align="end">{{postalCode.value.length}} / 8</mat-hint>
                 </mat-form-field>
             </td>

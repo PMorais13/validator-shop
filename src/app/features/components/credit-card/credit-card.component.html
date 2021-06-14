@@ -23,11 +23,18 @@
   <p>
     <mat-form-field class="example-full-width">
       <mat-label>Numero do cartão</mat-label>
-      <textarea matInput #numero type="number" placeholder="4444444444444444" name="numero" formControlName="numero" maxlength="16" required></textarea>
+      <textarea 
+        matInput #numero type="number" 
+        placeholder="4444444444444444" 
+        name="numero" 
+        formControlName="numero" 
+        maxlength="50"
+        mask="0000-0000-0000-0000" 
+        required></textarea>
       <mat-error *ngIf="(cartao.touched || cartao.dirty) && f.numero.errors?.required">Este campo é obrigatório</mat-error>
       <mat-error *ngIf="(cartao.touched || cartao.dirty) && f.numero.errors?.minlength">Número minimo de caracteres é 16</mat-error>
       <mat-error *ngIf="(cartao.touched || cartao.dirty) && f.numero.errors?.maxlength">>Número máximo de caracteres atingido</mat-error>
-      <mat-hint align="end">{{numero.value.length}} / 16</mat-hint>
+      <mat-hint align="end">{{numero.value.length}} / 19</mat-hint>
     </mat-form-field>
   </p>
 
@@ -46,16 +53,31 @@
 
       <td>
         <mat-form-field class="example-full-width">
-          <input matInput [matDatepicker]="picker" #validade maxlength="9"
+          <input matInput #validade maxlength="5"
             nome="validade"
-            placeholder="Validade do cartão, ex: 12/05/26"
+            placeholder="Validade do cartão, MM/yy"
             nome="data"
             formControlName="data"
+            mask="M0/00"
             >
-          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-          <mat-datepicker #picker>Validade</mat-datepicker>
+          <mat-datepicker>Validade</mat-datepicker>
           <mat-error *ngIf="(cartao.touched || cartao.dirty) && f.data.errors?.required">Este campo é obrigatório</mat-error>
-          <mat-hint align="end">{{validade.value.length}} / 9</mat-hint>
+          <mat-hint align="end">{{validade.value.length}} / 5</mat-hint>
+        </mat-form-field>
+      </td>
+
+      <td>
+        <mat-form-field class="example-full-width">
+          <input matInput #cpf maxlength="14"
+            nome="cpf"
+            placeholder="CPF"
+            nome="cpf"
+            formControlName="cpf"
+            mask="000.000.000-00"
+            >
+          <mat-datepicker>CPF</mat-datepicker>
+          <mat-error *ngIf="(cartao.touched || cartao.dirty) && f.cpf.errors?.required">Este campo é obrigatório</mat-error>
+          <mat-hint align="end">{{cpf.value.length}} / 14</mat-hint>
         </mat-form-field>
       </td>
 

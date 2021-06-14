@@ -123,5 +123,8 @@
       }
     }
   },
-  "defaultProject": "validator-shop"
+  "defaultProject": "validator-shop",
+  "cli": {
+    "analytics": "10c84178-7d72-4939-b616-f7b1f24afba8"
+  }
 }

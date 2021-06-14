@@ -27,6 +27,7 @@ export class CreditCardComponent implements OnInit {
       seguranca : ['', [Validators.required, Validators.minLength(3), Validators.maxLength(3)]],
       data : ['', [Validators.required]],
       bandeira : ['', [Validators.required]],
+      cpf : ['', [Validators.required]],
       
     })
 
