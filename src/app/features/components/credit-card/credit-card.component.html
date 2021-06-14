@@ -1,0 +1,66 @@
+<form class="example-form" [formGroup]="cartao" (ngSubmit)="salvar()" (ngReset)="reset()">
+
+   <mat-form-field appearance="fill">
+     <mat-label>Bandeira do cartão</mat-label>
+    <mat-select required>
+      <mat-option value="visa">Visa</mat-option>
+      <mat-option value="master">MasterCard</mat-option>
+      <mat-option value="elo">Elo</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+
+  <p>
+    <mat-form-field class="example-full-width">
+      <mat-label>Nome impresso no cartão</mat-label>
+      <textarea matInput placeholder="JOAO DA SILVA" name="nome" formControlName="nome" required></textarea>
+      <mat-error *ngIf="(cartao.touched || cartao.dirty) && f.nome.errors?.required">Este campo é obrigatório</mat-error>
+      <mat-error *ngIf="(cartao.touched || cartao.dirty) && f.nome.errors?.minlength">Número minimo de caracteres é 3</mat-error>
+      <mat-error *ngIf="(cartao.touched || cartao.dirty) && f.nome.errors?.maxlength">>Número máximo de caracteres atingido</mat-error>
+    </mat-form-field>
+  </p>
+
+  <p>
+    <mat-form-field class="example-full-width">
+      <mat-label>Numero do cartão</mat-label>
+      <textarea matInput #numero type="number" placeholder="4444444444444444" name="numero" formControlName="numero" maxlength="16" required></textarea>
+      <mat-error *ngIf="(cartao.touched || cartao.dirty) && f.numero.errors?.required">Este campo é obrigatório</mat-error>
+      <mat-error *ngIf="(cartao.touched || cartao.dirty) && f.numero.errors?.minlength">Número minimo de caracteres é 16</mat-error>
+      <mat-error *ngIf="(cartao.touched || cartao.dirty) && f.numero.errors?.maxlength">>Número máximo de caracteres atingido</mat-error>
+      <mat-hint align="end">{{numero.value.length}} / 16</mat-hint>
+    </mat-form-field>
+  </p>
+
+  <table class="example-full-width" cellspacing="0">
+    <tr>
+      <td>
+        <mat-form-field class="example-full-width">
+          <mat-label>Código de Segurança</mat-label>
+          <input matInput #securityCode maxlength="3" placeholder="Ex. xxx" nome="seguranca" formControlName="seguranca" required>
+          <mat-error *ngIf="(cartao.touched || cartao.dirty) && f.seguranca.errors?.required">Este campo é obrigatório</mat-error>
+          <mat-error *ngIf="(cartao.touched || cartao.dirty) && f.seguranca.errors?.minlength">Número minimo de caracteres é 3</mat-error>
+          <mat-error *ngIf="(cartao.touched || cartao.dirty) && f.seguranca.errors?.maxlength">>Número máximo de caracteres atingido</mat-error>
+          <mat-hint align="end">{{securityCode.value.length}} / 3</mat-hint>
+        </mat-form-field>
+      </td>
+
+      <td>
+        <mat-form-field class="example-full-width">
+          <input matInput [matDatepicker]="picker" #validade maxlength="9"
+            placeholder="Validade do cartão, ex: 12/05/26"
+            nome="data"
+            formControlName="data">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker>Validade</mat-datepicker>
+          <mat-error *ngIf="(cartao.touched || cartao.dirty) && f.data.errors?.required">Este campo é obrigatório</mat-error>
+          <mat-hint align="end">{{validade.value.length}} / 9</mat-hint>
+        </mat-form-field>
+      </td>
+
+
+  </table>
+  <div>
+    <button class="btn btn-primary me-2" type="salvar" [routerLink]="salvar()">Próxima</button>
+    <button class="btn btn-primary" type="reset">Resetar</button>
+  </div>
+</form>

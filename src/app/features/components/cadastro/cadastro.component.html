@@ -1,0 +1,88 @@
+<form class="example-form" [formGroup]="cadastro" (ngSubmit)="salvar()" (ngReset)="reset()">
+    <mat-form-field class="example-full-width">
+        <mat-label>Compania</mat-label>
+        <input matInput placeholder="Empresa" name="empresa" formControlName="empresa" required>
+        <mat-error *ngIf="(cadastro.touched || cadastro.dirty) && f.empresa.errors?.required">Este campo é obrigatório</mat-error>
+        <mat-error *ngIf="(cadastro.touched || cadastro.dirty) && f.empresa.errors?.minlength">Número minimo de caracteres é 3</mat-error>
+        <mat-error *ngIf="(cadastro.touched || cadastro.dirty) && f.empresa.errors?.maxlength">Número máximo de caracteres atingido</mat-error>
+    </mat-form-field>
+    <div class="example-container">
+        <mat-form-field>
+            <mat-label>Email</mat-label>
+            <input matInput placeholder="pat@example.com" name="email" formControlName="email" required>
+            <mat-error *ngIf="(cadastro.touched || cadastro.dirty) && f.email.errors?.required">Este campo é obrigatório</mat-error>
+            <mat-error *ngIf="(cadastro.touched || cadastro.dirty) && f.email.errors?.email">Email invalido</mat-error>
+        </mat-form-field>
+    </div>
+    <table class="example-full-width" cellspacing="0">
+        <tr>
+            <td>
+                <mat-form-field class="example-full-width">
+                    <mat-label>Primeiro Nome</mat-label>
+                    <input matInput name="nome" formControlName="nome" required>
+                    <mat-error *ngIf="(cadastro.touched || cadastro.dirty) && f.nome.errors?.required">Este campo é obrigatório</mat-error>
+                    <mat-error *ngIf="(cadastro.touched || cadastro.dirty) && f.nome.errors?.minlength">Número minimo de caracteres é 3</mat-error>
+                    <mat-error *ngIf="(cadastro.touched || cadastro.dirty) && f.nome.errors?.maxlength">Número máximo de caracteres atingido</mat-error>
+                </mat-form-field>
+            </td>
+            <td>
+                <mat-form-field class="example-full-width">
+                    <mat-label>Sobrenome</mat-label>
+                    <input matInput name="sobrenome" formControlName="sobrenome" required>
+                    <mat-error *ngIf="(cadastro.touched || cadastro.dirty) && f.sobrenome.errors?.required">Este campo é obrigatório</mat-error>
+                    <mat-error *ngIf="(cadastro.touched || cadastro.dirty) && f.sobrenome.errors?.minlength">Número minimo de caracteres é 3</mat-error>
+                    <mat-error *ngIf="(cadastro.touched || cadastro.dirty) && f.sobrenome.errors?.maxlength">Número máximo de caracteres atingido</mat-error>
+                </mat-form-field>
+            </td>
+        </tr>
+    </table>
+
+    <p>
+        <mat-form-field class="example-full-width">
+            <mat-label>Endereço</mat-label>
+            <mat-error *ngIf="(cadastro.touched || cadastro.dirty) && f.endereco.errors?.required">Este campo é obrigatório</mat-error>
+            <mat-error *ngIf="(cadastro.touched || cadastro.dirty) && f.endereco.errors?.minlength">Número minimo de caracteres é 3</mat-error>
+            <mat-error *ngIf="(cadastro.touched || cadastro.dirty) && f.endereco.errors?.maxlength">Número máximo de caracteres atingido</mat-error>
+            <textarea matInput placeholder="Ex. 100 Main St" name="endereco" formControlName="endereco" required></textarea>
+        </mat-form-field>
+    </p>
+
+    <table class="example-full-width" cellspacing="0">
+        <tr>
+            <td>
+                <mat-form-field class="example-full-width">
+                    <mat-label>Cidade</mat-label>
+                    <mat-error *ngIf="(cadastro.touched || cadastro.dirty) && f.cidade.errors?.required">Este campo é obrigatório</mat-error>
+                    <mat-error *ngIf="(cadastro.touched || cadastro.dirty) && f.cidade.errors?.minlength">Número minimo de caracteres é 3</mat-error>
+                    <mat-error *ngIf="(cadastro.touched || cadastro.dirty) && f.cidade.errors?.maxlength">Número máximo de caracteres atingido</mat-error>
+                    <input matInput placeholder="Ex. Porto Alegre" name="cidade" formControlName="cidade" required>
+                </mat-form-field>
+            </td>
+            <td>
+                <mat-form-field class="example-full-width">
+                    <mat-label>UF</mat-label>
+                    <mat-error *ngIf="(cadastro.touched || cadastro.dirty) && f.estado.errors?.required">Este campo é obrigatório</mat-error>
+                    <mat-error *ngIf="(cadastro.touched || cadastro.dirty) && f.estado.errors?.minlength">Número minimo de caracteres é 2</mat-error>
+                    <mat-error *ngIf="(cadastro.touched || cadastro.dirty) && f.estado.errors?.maxlength">Número máximo de caracteres atingido</mat-error>
+                    <input matInput placeholder="Ex. Rio Grande do Sul" name="estado" formControlName="estado" required>
+                </mat-form-field>
+            </td>
+            <td>
+                <mat-form-field class="example-full-width">
+                    <mat-label>Código Postal</mat-label>
+                    <mat-error *ngIf="(cadastro.touched || cadastro.dirty) && f.cep.errors?.required">Este campo é obrigatório</mat-error>
+                    <mat-error *ngIf="(cadastro.touched || cadastro.dirty) && f.cep.errors?.minlength">Número minimo de caracteres é 8</mat-error>
+                    <mat-error *ngIf="(cadastro.touched || cadastro.dirty) && f.cep.errors?.maxlength">Número máximo de carateres atingido</mat-error>
+                    <input matInput #postalCode placeholder="Ex. 02270052" name="cep" formControlName="cep" required>
+                    <mat-hint align="end">{{postalCode.value.length}} / 8</mat-hint>
+                </mat-form-field>
+            </td>
+        </tr>
+    </table>
+    <div >
+        <button class="btn btn-primary me-2" type="salvar" [routerLink]="salvar()">Próxima</button>
+        <button class="btn btn-primary" type="reset">Resetar</button>
+    </div>
+
+</form>
+
