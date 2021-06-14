@@ -13,7 +13,7 @@
   <p>
     <mat-form-field class="example-full-width">
       <mat-label>Nome impresso no cartão</mat-label>
-      <textarea matInput placeholder="JOAO DA SILVA" name="nome" formControlName="nome" required></textarea>
+      <textarea matInput placeholder="JOAO DA SILVA" name="nome" formControlName="nome" required ></textarea>
       <mat-error *ngIf="(cartao.touched || cartao.dirty) && f.nome.errors?.required">Este campo é obrigatório</mat-error>
       <mat-error *ngIf="(cartao.touched || cartao.dirty) && f.nome.errors?.minlength">Número minimo de caracteres é 3</mat-error>
       <mat-error *ngIf="(cartao.touched || cartao.dirty) && f.nome.errors?.maxlength">>Número máximo de caracteres atingido</mat-error>
@@ -47,9 +47,11 @@
       <td>
         <mat-form-field class="example-full-width">
           <input matInput [matDatepicker]="picker" #validade maxlength="9"
+            nome="validade"
             placeholder="Validade do cartão, ex: 12/05/26"
             nome="data"
-            formControlName="data">
+            formControlName="data"
+            >
           <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
           <mat-datepicker #picker>Validade</mat-datepicker>
           <mat-error *ngIf="(cartao.touched || cartao.dirty) && f.data.errors?.required">Este campo é obrigatório</mat-error>

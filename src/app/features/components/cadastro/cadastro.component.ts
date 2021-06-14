@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-cadastro',
@@ -14,7 +14,7 @@ export class CadastroComponent implements OnInit {
 
   constructor(private fb: FormBuilder) { }
 
-  get f(){
+  get f() {
     return this.cadastro.controls;
   }
 
@@ -29,14 +29,14 @@ export class CadastroComponent implements OnInit {
       cidade: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(256)]],
       estado: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(2)]],
       cep: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(8)]],
-      
+
     })
   }
 
   salvar() {
-    if (this.cadastro.invalid){
+    if (this.cadastro.invalid) {
       return
-    } else{
+    } else {
       return this.link = '/credit-card';
     }
 
